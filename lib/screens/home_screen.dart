@@ -58,89 +58,100 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SafeArea(
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.only(top: 16, right: 16, left: 16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          'Chats',
-                          style: TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.bold),
-                        ),
-                        IconButton(
-                            color: Colors.pink,
-                            onPressed: () {},
-                            icon: const Icon(Icons.add_box_outlined))
-                      ],
-                    ),
+        extendBody: true,
+        body: SafeArea(
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 16, right: 16, left: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Chats',
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                   ),
+                  IconButton(
+                      color: Colors.pink,
+                      onPressed: () {},
+                      icon: const Icon(Icons.add_box_outlined))
+                ],
+              ),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: Column(
+                    children: [
+                      Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              hintText: 'Search..',
+                              hintStyle: TextStyle(
+                                color: Colors.grey.shade600,
+                              ),
+                              prefixIcon: Icon(
+                                Icons.search,
+                                size: 20.0,
+                                color: Colors.grey.shade600,
+                              ),
+                              filled: true,
+                              fillColor: Colors.grey.shade200,
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                                borderSide:
+                                    BorderSide(color: Colors.grey.shade200),
+                              ),
+                            ),
+                          )),
+                      ListView.builder(
+                        itemCount: tempList.length,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) => ChatUserItem(
+                            image: tempList[index].avatar,
+                            name: tempList[index].name,
+                            content: tempList[index].content,
+                            time: tempList[index].time,
+                            isRead: true),
+                      ),
+                    ],
+                  )),
+            ),
+          ]),
+        ),
+        bottomNavigationBar: SizedBox(
+          height: 70,
+          child: ClipRRect(
+            borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+            child: BottomNavigationBar(
+              backgroundColor: Colors.grey.shade100,
+              selectedItemColor: Colors.pink,
+              unselectedItemColor: Colors.grey.shade400,
+              selectedLabelStyle: const TextStyle(
+                fontWeight: FontWeight.w600,
+              ),
+              unselectedLabelStyle: const TextStyle(
+                fontWeight: FontWeight.w600,
+              ),
+              type: BottomNavigationBarType.fixed,
+              items: const [
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.message),
+                  label: 'Chats',
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        hintText: 'Search..',
-                        hintStyle: TextStyle(
-                          color: Colors.grey.shade600,
-                        ),
-                        prefixIcon: Icon(
-                          Icons.search,
-                          size: 20.0,
-                          color: Colors.grey.shade600,
-                        ),
-                        filled: true,
-                        fillColor: Colors.grey.shade200,
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                          borderSide: BorderSide(color: Colors.grey.shade200),
-                        )),
-                  ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.group),
+                  label: 'Groups',
                 ),
-                ListView.builder(
-                    itemCount: tempList.length,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) => ChatUserItem(
-                        image: tempList[index].avatar,
-                        name: tempList[index].name,
-                        content: tempList[index].content,
-                        time: tempList[index].time,
-                        isRead: true)),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.account_circle),
+                  label: 'Profile',
+                ),
               ],
-            )),
-        bottomNavigationBar: SafeArea(
-          child: BottomNavigationBar(
-            selectedItemColor: Colors.pink,
-            unselectedItemColor: Colors.grey.shade400,
-            selectedLabelStyle: const TextStyle(
-              fontWeight: FontWeight.w600,
             ),
-            unselectedLabelStyle: const TextStyle(
-              fontWeight: FontWeight.w600,
-            ),
-            type: BottomNavigationBarType.fixed,
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.message),
-                label: 'Chats',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.group),
-                label: 'Groups',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.account_circle),
-                label: 'Profile',
-              ),
-            ],
           ),
         ));
   }
