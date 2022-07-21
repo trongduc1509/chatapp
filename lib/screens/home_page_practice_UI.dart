@@ -115,22 +115,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             )),
                         SizedBox(
                           height: 120,
-                          child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  child: ListView.builder(
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: tempList.length,
-                                    shrinkWrap: true,
-                                    itemBuilder: ((context, index) =>
-                                        RecentChatItem(
-                                          image: tempList[index].avatar,
-                                          name: tempList[index].name,
-                                        )),
-                                  ),
-                                ),
-                              ]),
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: tempList.length,
+                            shrinkWrap: true,
+                            itemBuilder: ((context, index) => RecentChatItem(
+                                  image: tempList[index].avatar,
+                                  name: tempList[index].name,
+                                )),
+                          ),
                         ),
                         Expanded(
                           child: ListView.builder(
