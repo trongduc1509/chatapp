@@ -1,4 +1,4 @@
-import 'package:chatapp/components/chat_item.dart';
+import 'package:chatapp/components/component.dart';
 import 'package:chatapp/models/chat_user.dart';
 import 'package:flutter/material.dart';
 
@@ -75,6 +75,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                     ),
                     IconButton(
+                        splashColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
                         color: Colors.pink,
                         onPressed: () {},
                         icon: const Icon(Icons.add_box_outlined))
@@ -109,6 +111,17 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ),
                           )),
+                      SizedBox(
+                        height: 120,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: tempList.length,
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) => RecentChatItem(
+                              image: tempList[index].avatar,
+                              name: tempList[index].name),
+                        ),
+                      ),
                       ListView.builder(
                         itemCount: tempList.length,
                         shrinkWrap: true,
@@ -130,31 +143,37 @@ class _HomeScreenState extends State<HomeScreen> {
           child: ClipRRect(
             borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(30), topRight: Radius.circular(30)),
-            child: BottomNavigationBar(
-              backgroundColor: Colors.grey.shade100.withOpacity(0.8),
-              selectedItemColor: Colors.pink,
-              unselectedItemColor: Colors.grey.shade400,
-              selectedLabelStyle: const TextStyle(
-                fontWeight: FontWeight.w600,
+            child: Theme(
+              data: ThemeData(
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
               ),
-              unselectedLabelStyle: const TextStyle(
-                fontWeight: FontWeight.w600,
+              child: BottomNavigationBar(
+                backgroundColor: Colors.grey.shade100.withOpacity(0.8),
+                selectedItemColor: Colors.pink,
+                unselectedItemColor: Colors.grey.shade400,
+                selectedLabelStyle: const TextStyle(
+                  fontWeight: FontWeight.w600,
+                ),
+                unselectedLabelStyle: const TextStyle(
+                  fontWeight: FontWeight.w600,
+                ),
+                type: BottomNavigationBarType.fixed,
+                items: const [
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.message),
+                    label: 'Chats',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.group),
+                    label: 'Groups',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.account_circle),
+                    label: 'Profile',
+                  ),
+                ],
               ),
-              type: BottomNavigationBarType.fixed,
-              items: const [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.message),
-                  label: 'Chats',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.group),
-                  label: 'Groups',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.account_circle),
-                  label: 'Profile',
-                ),
-              ],
             ),
           ),
         ));

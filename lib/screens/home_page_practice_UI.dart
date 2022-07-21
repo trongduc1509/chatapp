@@ -140,10 +140,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       ],
                     ),
                   ),
-                  Center(
+                  const Center(
                     child: Text('Groups'),
                   ),
-                  Center(
+                  const Center(
                     child: Text('Profile'),
                   )
                 ],

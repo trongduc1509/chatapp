@@ -1,4 +1,4 @@
-import 'package:chatapp/screens/home_page_practice_UI.dart';
+import 'package:chatapp/screens/screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'screens/screen.dart';
