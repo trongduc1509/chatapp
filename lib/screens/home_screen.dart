@@ -62,20 +62,24 @@ class _HomeScreenState extends State<HomeScreen> {
         body: SafeArea(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 16, right: 16, left: 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'Chats',
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                  ),
-                  IconButton(
-                      color: Colors.pink,
-                      onPressed: () {},
-                      icon: const Icon(Icons.add_box_outlined))
-                ],
+            Container(
+              color: Colors.grey.shade100.withOpacity(0.8),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 16, right: 16, left: 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Chats',
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    ),
+                    IconButton(
+                        color: Colors.pink,
+                        onPressed: () {},
+                        icon: const Icon(Icons.add_box_outlined))
+                  ],
+                ),
               ),
             ),
             Expanded(
@@ -127,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
             borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(30), topRight: Radius.circular(30)),
             child: BottomNavigationBar(
-              backgroundColor: Colors.grey.shade100,
+              backgroundColor: Colors.grey.shade100.withOpacity(0.8),
               selectedItemColor: Colors.pink,
               unselectedItemColor: Colors.grey.shade400,
               selectedLabelStyle: const TextStyle(
