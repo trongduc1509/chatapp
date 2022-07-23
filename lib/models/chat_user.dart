@@ -9,4 +9,17 @@ class ChatUser {
       required this.name,
       required this.content,
       required this.time});
+
+  ChatUser copy(String? avatar, String? name, String? content, String? time) =>
+      ChatUser(
+          avatar: avatar ?? this.avatar,
+          name: name ?? this.name,
+          content: content ?? this.content,
+          time: time ?? this.time);
+}
+
+class ChatUserArgument {
+  final ChatUser chatUser;
+
+  ChatUserArgument({required this.chatUser});
 }

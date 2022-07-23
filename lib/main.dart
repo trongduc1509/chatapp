@@ -21,9 +21,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Theme.of(context).backgroundColor,
       ),
-      home: const HomeScreen(
-        title: 'TronD Chat',
-      ),
+      initialRoute: '/home',
+      routes: {
+        '/home': (_) => const HomeScreen(title: 'Tron.D Chat'),
+        '/conversation': (_) => const ChatRoomScreen(),
+      },
     );
   }
 }
