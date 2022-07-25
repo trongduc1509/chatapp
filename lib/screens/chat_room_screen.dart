@@ -1,5 +1,6 @@
-import 'package:chatapp/models/chat_user.dart';
+import 'package:chatapp/models/model.dart';
 import 'package:flutter/material.dart';
+import '../components/component.dart';
 
 class ChatRoomScreen extends StatefulWidget {
   const ChatRoomScreen({Key? key}) : super(key: key);
@@ -32,13 +33,14 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
               children: [
                 CircleAvatar(
                   backgroundImage: AssetImage(chatReceiver.avatar),
-                  maxRadius: 20,
+                  maxRadius: 23,
                 ),
                 const SizedBox(
                   width: 8.0,
                 ),
                 Expanded(
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
@@ -64,7 +66,10 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [],
+          children: const [
+            Spacer(),
+            ChatInputSpace(),
+          ],
         ),
       ),
     );

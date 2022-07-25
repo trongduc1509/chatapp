@@ -1,4 +1,4 @@
-import 'package:chatapp/constants/app_theme.dart';
+import 'package:chatapp/constants/constant_item.dart';
 import 'package:flutter/material.dart';
 import '../components/component.dart';
 import '../models/model.dart';
@@ -97,25 +97,8 @@ class _ChatListScreenState extends State<ChatListScreen> {
                     Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: TextField(
-                          decoration: InputDecoration(
-                            hintText: 'Search..',
-                            hintStyle: TextStyle(
-                              color: Colors.grey.shade600,
-                            ),
-                            prefixIcon: Icon(
-                              Icons.search,
-                              size: 20.0,
-                              color: Colors.grey.shade600,
-                            ),
-                            filled: true,
-                            fillColor: Colors.grey.shade200,
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                              borderSide:
-                                  BorderSide(color: Colors.grey.shade200),
-                            ),
-                          ),
-                        )),
+                            autofocus: false,
+                            decoration: AppTheme.myInputDecor('Search..'))),
                     SizedBox(
                       height: 120,
                       child: ListView.builder(
