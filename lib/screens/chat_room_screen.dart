@@ -16,48 +16,55 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
             .chatUser;
 
     return Scaffold(
+      appBar: AppBar(
+          centerTitle: false,
+          elevation: 0.0,
+          backgroundColor: Colors.grey.shade100.withOpacity(0.8),
+          leading: IconButton(
+              color: Colors.black,
+              onPressed: () => Navigator.of(context).pop(),
+              icon: const Icon(Icons.arrow_back_ios_new)),
+          title: Theme(
+            data: ThemeData(
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent),
+            child: Row(
+              children: [
+                CircleAvatar(
+                  backgroundImage: AssetImage(chatReceiver.avatar),
+                  maxRadius: 20,
+                ),
+                const SizedBox(
+                  width: 8.0,
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        chatReceiver.name,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                      ),
+                      Text(
+                        chatReceiver.content,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(color: Colors.black),
+                      ),
+                    ],
+                  ),
+                ),
+                IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz))
+              ],
+            ),
+          )),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Theme(
-                data: ThemeData(
-                    splashColor: Colors.transparent,
-                    highlightColor: Colors.transparent),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 8.0, vertical: 4.0),
-                  child: Row(
-                    children: [
-                      IconButton(
-                          onPressed: () => Navigator.of(context).pop(),
-                          icon: const Icon(Icons.arrow_back_ios_new)),
-                      CircleAvatar(
-                        backgroundImage: AssetImage(chatReceiver.avatar),
-                        maxRadius: 20,
-                      ),
-                      const SizedBox(
-                        width: 8.0,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            chatReceiver.name,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                                fontSize: 20.0, fontWeight: FontWeight.bold),
-                          ),
-                          Text(chatReceiver.content),
-                        ],
-                      ),
-                      const Spacer(),
-                      IconButton(
-                          onPressed: () {}, icon: const Icon(Icons.more_horiz))
-                    ],
-                  ),
-                ))
-          ],
+          children: [],
         ),
       ),
     );

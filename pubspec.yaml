@@ -40,6 +40,9 @@ dependencies:
   firebase_core: ^1.19.1
   grouped_list: ^5.1.2
   google_fonts: ^3.0.1
+  device_preview: ^1.1.0
+  firebase_core_platform_interface: ^4.5.0
+  device_preview_screenshot: ^1.0.0
 
 dev_dependencies:
   flutter_test:
