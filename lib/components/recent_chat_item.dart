@@ -1,4 +1,4 @@
-import 'package:chatapp/models/chat_user.dart';
+import 'package:chatapp/models/model.dart';
 import 'package:flutter/material.dart';
 
 class RecentChatItem extends StatelessWidget {
@@ -6,21 +6,19 @@ class RecentChatItem extends StatelessWidget {
       {Key? key,
       required this.image,
       required this.name,
-      required this.content,
-      required this.time})
+      required this.content})
       : super(key: key);
   final String image;
   final String name;
   final String content;
-  final String time;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => Navigator.of(context).pushNamed('/conversation',
           arguments: ChatUserArgument(
-              chatUser: ChatUser(
-                  avatar: image, name: name, content: content, time: time))),
+              chatUser:
+                  UserModel(avaUrl: image, name: name, nickName: content))),
       child: Container(
         width: 100,
         height: 150,

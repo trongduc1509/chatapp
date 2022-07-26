@@ -1,13 +1,13 @@
-import './user_model.dart';
-
 class MessageModel {
-  final UserModel sender;
+  final int? id;
+  final int senderId;
   final String content;
   final String time;
   final bool unread;
 
   MessageModel(
-      {required this.sender,
+      {this.id,
+      required this.senderId,
       required this.content,
       required this.time,
       this.unread = true});

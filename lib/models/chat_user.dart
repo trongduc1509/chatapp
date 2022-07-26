@@ -1,3 +1,5 @@
+import './user_model.dart';
+
 class ChatUser {
   final String avatar;
   final String name;
@@ -19,7 +21,7 @@ class ChatUser {
 }
 
 class ChatUserArgument {
-  final ChatUser chatUser;
+  final UserModel chatUser;
 
   ChatUserArgument({required this.chatUser});
 }

@@ -12,7 +12,7 @@ class ChatRoomScreen extends StatefulWidget {
 class _ChatRoomScreenState extends State<ChatRoomScreen> {
   @override
   Widget build(BuildContext context) {
-    final ChatUser chatReceiver =
+    final UserModel chatReceiver =
         (ModalRoute.of(context)!.settings.arguments as ChatUserArgument)
             .chatUser;
 
@@ -32,7 +32,7 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
             child: Row(
               children: [
                 CircleAvatar(
-                  backgroundImage: AssetImage(chatReceiver.avatar),
+                  backgroundImage: AssetImage(chatReceiver.avaUrl),
                   maxRadius: 23,
                 ),
                 const SizedBox(
@@ -52,7 +52,7 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
                             color: Colors.black),
                       ),
                       Text(
-                        chatReceiver.content,
+                        chatReceiver.nickName!,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(color: Colors.black),
                       ),

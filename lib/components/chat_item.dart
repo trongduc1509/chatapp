@@ -1,4 +1,4 @@
-import 'package:chatapp/models/chat_user.dart';
+import 'package:chatapp/models/model.dart';
 import 'package:flutter/material.dart';
 
 class ChatUserItem extends StatelessWidget {
@@ -7,13 +7,13 @@ class ChatUserItem extends StatelessWidget {
       required this.image,
       required this.name,
       required this.content,
-      required this.time,
+      this.time,
       required this.isRead})
       : super(key: key);
   final String image;
   final String name;
   final String content;
-  final String time;
+  final String? time;
   final bool isRead;
 
   @override
@@ -22,8 +22,8 @@ class ChatUserItem extends StatelessWidget {
       onTap: () {
         Navigator.pushNamed(context, '/conversation',
             arguments: ChatUserArgument(
-                chatUser: ChatUser(
-                    avatar: image, name: name, content: content, time: time)));
+                chatUser:
+                    UserModel(avaUrl: image, name: name, nickName: content)));
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
@@ -62,7 +62,7 @@ class ChatUserItem extends StatelessWidget {
               width: 10.0,
             ),
             Text(
-              time,
+              time ?? '',
               style: const TextStyle(
                   color: Colors.grey,
                   fontSize: 15,

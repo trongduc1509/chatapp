@@ -120,11 +120,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             itemCount: tempList.length,
                             shrinkWrap: true,
                             itemBuilder: ((context, index) => RecentChatItem(
-                                  image: tempList[index].avatar,
-                                  name: tempList[index].name,
-                                  content: tempList[index].content,
-                                  time: tempList[index].time,
-                                )),
+                                image: tempList[index].avatar,
+                                name: tempList[index].name,
+                                content: tempList[index].content)),
                           ),
                         ),
                         Expanded(
