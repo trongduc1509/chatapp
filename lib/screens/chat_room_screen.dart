@@ -1,3 +1,5 @@
+import 'package:chatapp/components/message_item.dart';
+import 'package:chatapp/constants/app_theme.dart';
 import 'package:chatapp/models/model.dart';
 import 'package:flutter/material.dart';
 import '../components/component.dart';
@@ -15,6 +17,26 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
     final UserModel chatReceiver =
         (ModalRoute.of(context)!.settings.arguments as ChatUserArgument)
             .chatUser;
+
+    final List<MessageModel> messageList = [
+      MessageModel(
+          sender: AppTheme.tempList[1],
+          content: "Hello dhsudhushduhsduhsihd=djasdasdjiasjdiasjdjasidjasijda",
+          time: "03:00"),
+      MessageModel(
+          sender: AppTheme.tempList[0], content: "Hello", time: "01:00"),
+      // MessageModel(
+      //     sender: AppTheme.tempList[2], content: "Hello", time: "05:00"),
+      // MessageModel(
+      //     sender: AppTheme.tempList[3], content: "Hello", time: "07:00"),
+      // MessageModel(
+      //     sender: AppTheme.tempList[4], content: "Hello", time: "09:00"),
+      // MessageModel(
+      //     sender: AppTheme.tempList[5], content: "Hello", time: "11:00"),
+      // MessageModel(
+      //     sender: AppTheme.tempList[6], content: "Hello", time: "13:00"),
+      // MessageModel(sender: AppTheme.tempList[7], content: "Hi", time: "15:00"),
+    ];
 
     return Scaffold(
       appBar: AppBar(
@@ -64,12 +86,23 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
             ),
           )),
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            Spacer(),
-            ChatInputSpace(),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                  child: ListView.builder(
+                itemCount: messageList.length,
+                itemBuilder: (context, index) => MessageItem(
+                    message: messageList[index],
+                    avaUrl: messageList[index].sender.avaUrl,
+                    time: messageList[index].time,
+                    isMine: (index % 2 == 0) ? true : false),
+              )),
+              const ChatInputSpace(),
+            ],
+          ),
         ),
       ),
     );

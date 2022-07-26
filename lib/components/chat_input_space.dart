@@ -14,27 +14,24 @@ class _ChatInputSpaceState extends State<ChatInputSpace> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
-      child: Row(
-        children: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.insert_emoticon)),
-          Expanded(
-            child: TextField(
-              controller: _inputController,
-              keyboardType: TextInputType.multiline,
-              maxLines: 6,
-              minLines: 1,
-              decoration: AppTheme.myInputDecor('Aa'),
-              onChanged: (value) => _currentMessage = value,
-            ),
+    return Row(
+      children: [
+        IconButton(onPressed: () {}, icon: const Icon(Icons.insert_emoticon)),
+        Expanded(
+          child: TextField(
+            controller: _inputController,
+            keyboardType: TextInputType.multiline,
+            maxLines: 6,
+            minLines: 1,
+            decoration: AppTheme.myInputDecor('Aa'),
+            onChanged: (value) => _currentMessage = value,
           ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.send),
-          )
-        ],
-      ),
+        ),
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.send),
+        )
+      ],
     );
   }
 }
